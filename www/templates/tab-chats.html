@@ -1,0 +1,47 @@
+<ion-view view-title="Tinder+" hide-nav-bar="true">
+      <ion-header-bar align-title="center" class="bar-stable">
+
+        <div class="buttons" ng-click="slideTo(0)">
+          <button class="button button-clear icon ion-person animated {{slideIndex == 0 ? 'color-red' : 'color-gray'}}"></button>
+        </div>
+        <h1 class="title {{slideIndex ==1 ? 'color-red' : 'color-gray'}}" ng-click="slideTo(1)">
+          <img ng-src="img/tinder.png" class="header-logo">
+        </h1>
+        <div class="buttons" ng-click="slideTo(2)">
+            <button class="button button-clear icon ion-chatbubbles animated {{slideIndex == 2 ? 'color-red' : 'color-gray'}}"></button>
+        </div>
+
+      </ion-header-bar>
+      <ion-content>
+        <div class="item-input-inset">
+          <label class="item-input-wrapper">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input force-lower-case type="text" class="bold" placeholder="Search 7 Matches" ng-model="search" ng-value="search" ng-change="filterResults(search)">
+          </label>
+          <button class="button button-stable button-clear" ng-click="filterResults(null);search=null">
+            Cancel
+          </button>
+        </div>
+        <div class="item item-divider bg-white uppercase color-red" style="border:none;">
+          Matches
+          <span class="badge-tinder gotham-book">3</span>
+        </div>
+        <div class="padding">
+          <ks-swiper-container initial-slide="0" loop="false" show-nav-buttons="false" slides-per-view="4" space-between="5" pagination-clickable="false">
+              <ks-swiper-slide class="swiper-slide" ng-repeat="s in ['max', 'ben', 'perry', 'adam', 'mike']">
+                  <img ng-src="img/{{s}}.png" class="img-circled">
+              </ks-swiper-slide>
+          </ks-swiper-container>
+        </div>
+        <hr>
+        <div class="item item-divider bg-white uppercase color-red" style="border:none;">Messages</div>
+        <ion-list>
+            <ion-item class="item-light item-text-wrap item-avatar item-borderless item-icon-right" data-ng-repeat="blog in ['ben', 'max', 'mike', 'perry','ben', 'max', 'mike', 'perry'] track by $index" style="overflow:hidden;" ng-href="#/tab/dash/1">
+              <img ng-src="img/{{blog}}.png">
+              <h2 class="capitalize font-120">{{blog}}</h2>
+              <p class="capitalize color-gray">Sent you a message</p>
+              <hr class="item-hr">
+            </ion-item>
+        </ion-list>
+      </ion-content>
+</ion-view>
